@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  openneighbor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: openneighbor:latest
+    container_name: openneighbor-app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./logs:/app/logs
+      - ./outputs:/app/outputs
+    environment:
+      - PYTHONPATH=/app
+      - OPENNEIGHBOR_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import openneighbor; print('healthy')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Redis for caching (if needed in future)
+  redis:
+    image: redis:7-alpine
+    container_name: openneighbor-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    profiles:
+      - with-redis
+
+  # Optional: PostgreSQL for data storage (if needed in future)
+  postgres:
+    image: postgres:15-alpine
+    container_name: openneighbor-db
+    environment:
+      POSTGRES_DB: openneighbor
+      POSTGRES_USER: openneighbor
+      POSTGRES_PASSWORD: openneighbor_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    profiles:
+      - with-db
+
+volumes:
+  redis_data:
+  postgres_data:
+
+networks:
+  default:
+    name: openneighbor-network 
