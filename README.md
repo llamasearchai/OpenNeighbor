@@ -407,32 +407,7 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 - **Click** for the command-line interface
 
 ## Support
+- **Author**: Nik Jois
 
-- **Documentation**: [https://openneighbor.readthedocs.io](https://openneighbor.readthedocs.io)
-- **Issues**: [GitHub Issues](https://github.com/nikjois/openneighbor/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/nikjois/openneighbor/discussions)
 - **Email**: nikjois@llamasearch.ai
 
-## Roadmap
-
-### Version 1.1 (Q3 2024)
-- [ ] Real-time model updates
-- [ ] A/B testing framework
-- [ ] Advanced privacy features
-- [ ] Mobile SDK
-
-### Version 1.2 (Q4 2024)
-- [ ] Multi-language support
-- [ ] Federated learning
-- [ ] Edge deployment
-- [ ] Advanced visualization
-
-### Version 2.0 (Q1 2025)
-- [ ] Multi-modal recommendations (images, audio)
-- [ ] Causal inference integration
-- [ ] Quantum-inspired algorithms
-- [ ] Global scalability features
-
----
-
-**Built with care for neighborhood communities worldwide** 
